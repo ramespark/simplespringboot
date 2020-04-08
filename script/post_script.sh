@@ -1,6 +1,6 @@
 #!/bin/sh
-pip install boto3
+pip3 install boto3
 
-python ./script/artifact_upload.py
+python3 ./script/artifact_upload.py
 
 ls
