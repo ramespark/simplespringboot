@@ -8,11 +8,11 @@ class UserResController {
 
     @RequestMapping("/")
     fun getDefault(): String{
-        return "Welcome to test app"
+        return "Welcome to user app"
     }
 
     @RequestMapping("/user")
     fun getUser(): User{
-        return User("TestUser",17)
+        return User("TestUser",18)
     }
 }
