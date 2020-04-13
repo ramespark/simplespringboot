@@ -13,6 +13,6 @@ class UserResController {
 
     @RequestMapping("/user")
     fun getUser(): User{
-        return User("TestUser",16)
+        return User("TestUser",17)
     }
 }
