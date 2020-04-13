@@ -3,9 +3,11 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 plugins {
 	id("org.springframework.boot") version "2.2.6.RELEASE"
 	id("io.spring.dependency-management") version "1.0.9.RELEASE"
+	id("jacoco")
 	kotlin("jvm") version "1.3.71"
 	kotlin("plugin.spring") version "1.3.71"
 }
+
 
 group = "com.learning"
 version = "0.0.1-SNAPSHOT"
@@ -18,6 +20,34 @@ configurations {
 	}
 }
 
+/*tasks.jacocoTestReport {
+	reports {
+		xml.isEnabled = false
+		csv.isEnabled = false
+		html.isEnabled = true
+		html.destination = file("$buildDir/reports/coverage")
+	}
+}
+
+tasks.jacocoTestCoverageVerification {
+	violationRules {
+		rule {
+			limit {
+				minimum = "0.5".toBigDecimal()
+			}
+		}
+	}
+}*/
+
+val testCoverage by tasks.registering {
+	group = "verification"
+	description = "Runs the unit tests with coverage."
+
+	dependsOn(":test", ":jacocoTestReport", ":jacocoTestCoverageVerification")
+	val jacocoTestReport = tasks.findByName("jacocoTestReport")
+	jacocoTestReport?.mustRunAfter(tasks.findByName("test"))
+	tasks.findByName("jacocoTestCoverageVerification")?.mustRunAfter(jacocoTestReport)
+}
 
 repositories {
 	mavenCentral()
