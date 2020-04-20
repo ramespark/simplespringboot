@@ -1,3 +1,2 @@
 #!/bin/bash
-sudo nohup fuser -k 80/tcp
-sudo nohup java -jar simplerestuser-0.0.1-SNAPSHOT.jar > /home/ubuntu/log.txt &
+ssh -i ./listudy.pem ubuntu@13.233.114.151 ssh /home/ubuntu/setup.sh
