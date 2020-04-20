@@ -34,8 +34,7 @@ class SimplerestuserApplicationTests {
     fun getUser() {
         mvc.perform(MockMvcRequestBuilders.get("/user").accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk)
-                .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.age", equalTo(18)))
+                .andExpect(content().contentType(MediaType.APPLICATION_JSON))                
                 .andExpect(jsonPath("$.name", equalTo("TestUser")))
     }
 }
