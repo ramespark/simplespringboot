@@ -30,13 +30,13 @@ jobs:
     executor: aws-cli/default
     steps:
       - attach_workspace: 
-          at: ~/app
+          at: .
       - aws-cli/setup:
           profile-name: default
       - run:
            pwd
       - run:
-           ls
+           ls ~/app
       - run:
           name: Update to S3
           command: aws  s3 sync ./build/libs/simplerestuser-0.0.1-SNAPSHOT.jar s3://circleci-simplespring/ --delete
