@@ -34,6 +34,10 @@ jobs:
       - aws-cli/setup:
           profile-name: default
       - run:
+           pwd
+      - run:
+           ls
+      - run:
           name: Update to S3
           command: aws  s3 sync ~/repo/build/libs/simplerestuser-0.0.1-SNAPSHOT.jar s3://circleci-simplespring/ --delete
 
