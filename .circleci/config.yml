@@ -2,32 +2,22 @@
 #
 # Check https://circleci.com/docs/2.0/language-java/ for more details
 #
-version: 2.1
+version: 2
 orbs:
   aws-cli: circleci/aws-cli@0.1.18
 jobs:
   build_project:
-    working_directory: ~/app
     docker:
       - image: circleci/openjdk:8-jdk
-      
     environment:
       JVM_OPTS: -Xmx3200m
+
     steps:
       - checkout
-
-      # Download and cache dependencies
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "build.gradle" }}
-            # fallback to using the latest cache if no exact match is found
-            - v1-dependencies-
-
+      - run: pwd
+      - run: ls
       - persist_to_workspace: 
-          root: ~/
-          path: 
-             - .cache
-             - app
+          root: .
       - run: gradle dependencies
 
       # run tests!
@@ -37,7 +27,7 @@ jobs:
     executor: aws-cli/default
     steps:
       - attach_workspace: 
-          at: ~/app
+          at: /tmp/workspace
       - aws-cli/setup:
           profile-name: default
       - run:
