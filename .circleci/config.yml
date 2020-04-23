@@ -33,7 +33,7 @@ jobs:
       - run:
            pwd
       - run:
-           ls /home/circleci/app
+           ls /home/circleci/app/build/libs
       - run:
           name: Update to S3
           command: aws  s3 sync /home/circleci/app/build/libs/simplerestuser-0.0.1-SNAPSHOT.jar s3://circleci-simplespring/ --delete
