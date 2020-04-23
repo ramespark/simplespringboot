@@ -35,7 +35,7 @@ jobs:
           profile-name: default
       - run:
           name: Update to S3
-          command: aws  s3 sync ~/repo/simplespringboot/build/libs/simplerestuser-0.0.1-SNAPSHOT.jar s3://circleci-simplespring/ --delete
+          command: aws  s3 sync ~/repo/build/libs/simplerestuser-0.0.1-SNAPSHOT.jar s3://circleci-simplespring/ --delete
 
 workflows:
   version: 2
