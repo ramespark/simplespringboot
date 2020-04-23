@@ -31,10 +31,6 @@ jobs:
       - aws-cli/setup:
           profile-name: default
       - run:
-           pwd
-      - run:
-           ls /home/circleci/app/build/libs
-      - run:
           name: Update to S3
           command: aws  s3 sync /home/circleci/app/build/libs/ s3://circleci-simplespring/ --delete
 
