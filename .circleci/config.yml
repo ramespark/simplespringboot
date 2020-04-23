@@ -29,8 +29,7 @@ jobs:
   deploy_project:
     executor: aws-cli/default
     steps:
-      - attach_workspace:
-          at: ~/repo
+      - working_directory: ~/repo
       - aws-cli/setup:
           profile-name: default
       - run:
