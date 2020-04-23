@@ -35,7 +35,7 @@ jobs:
           profile-name: default
       - run:
           name: Update to S3
-          command: aws sync s3 ~/repo/simplespringboot/build/libs/simplerestuser-0.0.1-SNAPSHOT.jar s3://circleci-simplespring/ --deploy
+          command: aws  s3 sync ~/repo/simplespringboot/build/libs/simplerestuser-0.0.1-SNAPSHOT.jar s3://circleci-simplespring/ --deploy
 
 workflows:
   version: 2
