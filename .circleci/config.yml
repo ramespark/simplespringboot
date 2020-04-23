@@ -14,16 +14,14 @@ jobs:
       JVM_OPTS: -Xmx3200m
     steps:
       - checkout
+      - run: gradle dependencies
+      - run: gradle bootJar
       - run: pwd
       - run: ls
       - persist_to_workspace: 
           root: ~/
           paths:
             - .
-      - run: gradle dependencies
-      - run: gradle bootJar
-      - run: pwd
-      - run: ls
 
   deploy_project:
     executor: aws-cli/default
@@ -35,7 +33,7 @@ jobs:
       - run:
            pwd
       - run:
-           ls ~/app
+           ls /home/circleci/app
       - run:
           name: Update to S3
           command: aws  s3 sync ./build/libs/simplerestuser-0.0.1-SNAPSHOT.jar s3://circleci-simplespring/ --delete
