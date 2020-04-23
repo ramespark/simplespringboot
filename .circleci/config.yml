@@ -30,7 +30,7 @@ jobs:
     executor: aws-cli/default
     steps:
       - attach_workspace: 
-          at: .
+          at: ~/app
       - aws-cli/setup:
           profile-name: default
       - run:
