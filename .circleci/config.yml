@@ -19,7 +19,7 @@ jobs:
       - run: ls
       - persist_to_workspace: 
           root: .
-          path:
+          paths:
             - .
       - run: gradle dependencies
       - run: gradle bootJar
