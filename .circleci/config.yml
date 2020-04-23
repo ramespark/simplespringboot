@@ -7,13 +7,9 @@ orbs:
   aws-cli: circleci/aws-cli@0.1.18
 jobs:
   build_project:
+    working_directory: ~/app
     docker:
       - image: circleci/openjdk:8-jdk
-    persist_to_workspace: 
-      root: ~/
-      path: 
-        - .cache
-        - app
       
     environment:
       JVM_OPTS: -Xmx3200m
@@ -27,6 +23,11 @@ jobs:
             # fallback to using the latest cache if no exact match is found
             - v1-dependencies-
 
+      - persist_to_workspace: 
+          root: ~/
+          path: 
+             - .cache
+             - app
       - run: gradle dependencies
 
       # run tests!
