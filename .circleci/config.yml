@@ -23,6 +23,8 @@ jobs:
             - .
       - run: gradle dependencies
       - run: gradle bootJar
+      - run: pwd
+      - run: ls
 
   deploy_project:
     executor: aws-cli/default
